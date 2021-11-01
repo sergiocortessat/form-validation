@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const useForm = (validate:any) => {
+const useForm = ({validate, submitForm}:any) => {
     const [values, setValues] = useState({
         username: '',
         email: '',
@@ -22,13 +22,17 @@ const useForm = (validate:any) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        // const errors = validate(values);
-        // setErrors(errors);
         setErrors(validate(values));
         setIsSubmitting(true);
     }
 
-    return { handleChange, values, errors, handleSubmit, isSubmitting };
+    useEffect(() => {
+        if (Object.keys(errors).length === 0 && isSubmitting) {
+            submitForm();
+        }
+    }, [errors, isSubmitting, submitForm]);
+
+    return { handleChange, values, errors, handleSubmit };
 }
 
 export default useForm;

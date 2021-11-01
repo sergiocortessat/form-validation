@@ -2,8 +2,8 @@ import React from 'react';
 import useForm from './useForm'
 import validate from './Validation'
 
-const FormSignUp = () => {
-    const {values,handleChange, handleSubmit,errors} = useForm(validate)
+const FormSignUp = ({submitForm}:any) => {
+    const {values,handleChange, handleSubmit,errors} = useForm({submitForm, validate})
     return (
         <div className="form-content-right">
             <form className="form" onSubmit={handleSubmit}>
