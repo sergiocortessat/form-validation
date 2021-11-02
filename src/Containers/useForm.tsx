@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 
-const useForm = ({validate, submitForm}:any) => {
+interface IForm {
+    submitForm:  () => void;
+    validate: (values: {username: string, password: string, email: string, password2: string}) => void;
+}
+
+const useForm = ({validate, submitForm}:IForm) => {
     const [values, setValues] = useState({
         username: '',
         email: '',

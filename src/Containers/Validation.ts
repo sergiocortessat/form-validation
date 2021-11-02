@@ -3,9 +3,22 @@ const isValidEmail = (email:string) => {
     return re.test(String(email).toLowerCase());
 }
 
+interface IValidation {
+    username: string;
+    email: string;
+    password: string;
+    password2: string;
+}
 
-export default function validateInfo(values:any) {
-    let errors:any = {};
+interface IErrorValidation {
+    username?: string;
+    email?: string;
+    password?: string;
+    password2?: string;
+}
+
+export default function validateInfo(values:IValidation) {
+    let errors:IErrorValidation = {};
     if (!values.username.trim()) {
         errors.username = 'Username required';
     }

@@ -2,7 +2,11 @@ import React from 'react';
 import useForm from './useForm'
 import validate from './Validation'
 
-const FormSignUp = ({submitForm}:any) => {
+interface IFormSignUp {
+    submitForm: () => void;
+}
+
+const FormSignUp = ({submitForm} :IFormSignUp) => {
     const {values,handleChange, handleSubmit,errors} = useForm({submitForm, validate})
     return (
         <div className="form-content-right">
@@ -72,7 +76,7 @@ const FormSignUp = ({submitForm}:any) => {
                     Sign-up
                 </button>
                 <span className="form-input-login">
-                    Already ha=ve an account? <a href='/login'>Login</a>
+                    Already have an account? <a href='/login'>Login</a>
                 </span>
             </form>
         </div>

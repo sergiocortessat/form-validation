@@ -5,7 +5,6 @@ import Form from "./Containers/Form";
 function App() {
   return (
     <div className="App">
-      {/* Create a validation form */}
       <Form />
     </div>
   );
